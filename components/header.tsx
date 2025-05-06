@@ -78,7 +78,7 @@ export default function Header() {
               <button className="flex items-center gap-1 text-sm font-medium py-2">
                 About <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
-              <div className="absolute left-0 top-full z-[100] mt-1 hidden w-[600px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block">
+              <div className="absolute left-0 top-full z-[100] mt-1 hidden w-[600px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2">
                 <div className="grid grid-cols-3 gap-4">
                   <Link
                     href="/about/overview"
@@ -346,8 +346,8 @@ export default function Header() {
                 Investors <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
-                style={{ left: "-400px", right: "auto" }}
+                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2"
+                style={{ left: "auto", right: "0" }}
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -421,8 +421,8 @@ export default function Header() {
                 <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
-                style={{ left: "-600px", right: "auto" }}
+                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2"
+                style={{ left: "auto", right: "0" }}
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -495,8 +495,8 @@ export default function Header() {
                 Careers <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
-                style={{ left: "-700px", right: "auto" }}
+                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2"
+                style={{ left: "auto", right: "0" }}
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -589,7 +589,9 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`${mobileMenuOpen ? "block" : "hidden"} md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50 border-t`}
+        className={`${
+          mobileMenuOpen ? "block" : "hidden"
+        } md:hidden fixed top-[64px] left-0 right-0 bottom-0 bg-white shadow-lg z-[100] border-t overflow-y-auto`}
       >
         <div className="space-y-1 px-4 py-5 sm:px-6">
           <nav className="flex flex-col gap-4">
