@@ -19,7 +19,7 @@ export default function MediaLibraryPage() {
     },
     {
       id: "img-002",
-      title: "Corporate Headquarters",
+      title: "Corporate Headquarters - Nairobi",
       category: "Facilities",
       date: "May 2023",
       thumbnail: "/images/about-corporate.png",

@@ -111,11 +111,11 @@ export default function Footer() {
             <div className="space-y-4">
               <p className="flex items-start gap-2 text-gray-400">
                 <MapPin className="mt-1 h-4 w-4" />
-                <span>123 Business Avenue, New York, NY 10001, USA</span>
+                <span>Hasey Group Tower, Upperhill, Nairobi, Kenya</span>
               </p>
               <p className="flex items-center gap-2 text-gray-400">
                 <PhoneCall className="h-4 w-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>+254 (020) 123-4567</span>
               </p>
               <Link href="/contact" className="inline-block rounded-md bg-primary px-4 py-2 text-white hover:bg-primary/90">
                 Get in Touch

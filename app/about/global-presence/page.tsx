@@ -44,6 +44,13 @@ export default function GlobalPresencePage() {
       operations: "Energy, Infrastructure, Manufacturing",
       image: "/placeholder.svg?height=300&width=500&query=latin america map business",
     },
+    {
+      region: "Africa & Middle East",
+      headquarters: "Nairobi, Kenya",
+      countries: ["Kenya", "UAE", "Saudi Arabia", "South Africa", "Nigeria", "Egypt"],
+      employees: "8,000+",
+      operations: ["Energy", "Infrastructure", "Technology", "Manufacturing"],
+    },
   ]
 
   return (
@@ -93,7 +100,7 @@ export default function GlobalPresencePage() {
                   </div>
                   <div>
                     <h4 className="font-semibold">Business Operations</h4>
-                    <p className="text-gray-600">{region.operations}</p>
+                    <p className="text-gray-600">{region.operations.join(", ")}</p>
                   </div>
                 </div>
               </div>

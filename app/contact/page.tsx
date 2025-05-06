@@ -36,14 +36,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Global Headquarters</h3>
-                    <address className="not-italic text-gray-600">
-                      Hasey Tower
-                      <br />
-                      123 Corporate Drive
-                      <br />
-                      New York, NY 10001
-                      <br />
-                      United States
+                    <address className="mt-2 space-y-1 text-sm text-gray-600 not-italic">
+                      <p>Hasey Group Tower</p>
+                      <p>Upperhill, Nairobi</p>
+                      <p>Kenya</p>
                     </address>
                   </div>
                 </div>

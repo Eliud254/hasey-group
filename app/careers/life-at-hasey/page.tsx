@@ -142,6 +142,7 @@ export default function LifeAtHaseyPage() {
             <div className="p-4 text-center">
               <h3 className="font-bold">New York, USA</h3>
               <p className="text-gray-600">Global Headquarters</p>
+              <p className="font-semibold">Nairobi, Kenya</p>
             </div>
           </div>
           <div className="overflow-hidden rounded-lg shadow-sm">
