@@ -46,11 +46,28 @@ import {
 import { Button } from "@/components/ui/button"
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
+  type SectionName = 'about' | 'businesses' | 'sustainability' | 'investors' | 'news' | 'careers'
+  
+  const [openSections, setOpenSections] = useState<Record<SectionName, boolean>>({
+    about: false,
+    businesses: false,
+    sustainability: false,
+    investors: false,
+    news: false,
+    careers: false
+  })
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const toggleSection = (section: SectionName) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
   }
 
   return (
@@ -62,9 +79,9 @@ export default function Header() {
             <Image
               src="/images/hasey-logo.png"
               alt="Hasey Group"
-              width={720}
-              height={191}
-              className="h-32 w-auto"
+              width={180}
+              height={48}
+              className="h-12 w-auto"
               priority
             />
           </Link>
@@ -72,13 +89,13 @@ export default function Header() {
 
         {/* Navigation - centered */}
         <div className="hidden flex-1 justify-center md:flex">
-          <nav className="flex gap-8">
+          <nav className="flex gap-6">
             {/* About Dropdown */}
             <div className="group relative">
-              <button className="flex items-center gap-1 text-sm font-medium py-2">
+              <button className="flex items-center gap-1 text-sm font-medium py-2 px-1 hover:text-primary">
                 About <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
-              <div className="absolute left-0 top-full z-[100] mt-1 hidden w-[600px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2">
+              <div className="absolute left-0 top-full z-[100] mt-1 hidden w-[480px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block">
                 <div className="grid grid-cols-3 gap-4">
                   <Link
                     href="/about/overview"
@@ -136,12 +153,11 @@ export default function Header() {
 
             {/* Businesses Dropdown */}
             <div className="group relative">
-              <button className="flex items-center gap-1 text-sm font-medium py-2">
+              <button className="flex items-center gap-1 text-sm font-medium py-2 px-1 hover:text-primary">
                 Businesses <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[1000px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
-                style={{ left: "50%", transform: "translateX(-50%)" }}
+                className="absolute left-1/2 top-full z-[100] mt-1 hidden w-[800px] max-w-[90vw] rounded-md border bg-white p-4 shadow-lg group-hover:block transform -translate-x-1/2"
               >
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   <div className="space-y-3">
@@ -267,13 +283,12 @@ export default function Header() {
 
             {/* Sustainability Dropdown */}
             <div className="group relative">
-              <button className="flex items-center gap-1 text-sm font-medium py-2">
+              <button className="flex items-center gap-1 text-sm font-medium py-2 px-1 hover:text-primary">
                 Sustainability{" "}
                 <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute left-1/2 top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
-                style={{ transform: "translateX(-50%)" }}
+                className="absolute left-1/2 top-full z-[100] mt-1 hidden w-[600px] max-w-[90vw] rounded-md border bg-white p-4 shadow-lg group-hover:block transform -translate-x-1/2"
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -342,12 +357,11 @@ export default function Header() {
 
             {/* Investors Dropdown */}
             <div className="group relative">
-              <button className="flex items-center gap-1 text-sm font-medium py-2">
+              <button className="flex items-center gap-1 text-sm font-medium py-2 px-1 hover:text-primary">
                 Investors <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2"
-                style={{ left: "auto", right: "0" }}
+                className="absolute right-0 top-full z-[100] mt-1 hidden w-[600px] max-w-[90vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -416,13 +430,12 @@ export default function Header() {
 
             {/* News & Media Dropdown */}
             <div className="group relative">
-              <button className="flex items-center gap-1 text-sm font-medium py-2">
+              <button className="flex items-center gap-1 text-sm font-medium py-2 px-1 hover:text-primary">
                 News & Media{" "}
                 <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2"
-                style={{ left: "auto", right: "0" }}
+                className="absolute right-0 top-full z-[100] mt-1 hidden w-[600px] max-w-[90vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -491,12 +504,11 @@ export default function Header() {
 
             {/* Careers Dropdown */}
             <div className="group relative">
-              <button className="flex items-center gap-1 text-sm font-medium py-2">
+              <button className="flex items-center gap-1 text-sm font-medium py-2 px-1 hover:text-primary">
                 Careers <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div
-                className="absolute top-full z-[100] mt-1 hidden w-[800px] max-w-[95vw] rounded-md border bg-white p-4 shadow-lg group-hover:block lg:left-1/2 lg:-translate-x-1/2"
-                style={{ left: "auto", right: "0" }}
+                className="absolute right-0 top-full z-[100] mt-1 hidden w-[600px] max-w-[90vw] rounded-md border bg-white p-4 shadow-lg group-hover:block"
               >
                 <div className="grid grid-cols-3 gap-4">
                   <Link
@@ -591,176 +603,306 @@ export default function Header() {
       <div
         className={`${
           mobileMenuOpen ? "block" : "hidden"
-        } md:hidden fixed top-[64px] left-0 right-0 bottom-0 bg-white shadow-lg z-[100] border-t overflow-y-auto`}
+        } md:hidden fixed top-[64px] left-0 right-0 bottom-0 bg-white z-[100] border-t overflow-y-auto`}
       >
-        <div className="space-y-1 px-4 py-5 sm:px-6">
-          <nav className="flex flex-col gap-4">
-            <div className="border-b pb-2">
-              <div className="mb-2 font-medium">About</div>
-              <div className="grid grid-cols-1 gap-2">
-                <Link href="/about/overview" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Building2 className="h-4 w-4 text-primary" /> Overview
-                </Link>
-                <Link href="/about/leadership" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Users className="h-4 w-4 text-primary" /> Leadership
-                </Link>
-                <Link href="/about/history" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Clock className="h-4 w-4 text-primary" /> Our History
-                </Link>
-                <Link href="/about/values" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Heart className="h-4 w-4 text-primary" /> Values & Culture
-                </Link>
-                <Link href="/about/global-presence" className="flex items-center gap-2 text-sm text-gray-600">
-                  <MapPin className="h-4 w-4 text-primary" /> Global Presence
-                </Link>
-              </div>
+        <nav className="divide-y divide-gray-200">
+          {/* About Section */}
+          <div className="py-3 px-4">
+            <button
+              onClick={() => toggleSection('about')}
+              className="flex w-full items-center justify-between py-2"
+            >
+              <span className="text-lg font-semibold">About</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${openSections.about ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={openSections.about ? 'mt-2 space-y-1' : 'hidden'}>
+              <Link href="/about/overview" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Building2 className="h-4 w-4 text-primary" /> Overview
+              </Link>
+              <Link href="/about/leadership" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Users className="h-4 w-4 text-primary" /> Leadership
+              </Link>
+              <Link href="/about/history" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Clock className="h-4 w-4 text-primary" /> Our History
+              </Link>
+              <Link href="/about/values" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Heart className="h-4 w-4 text-primary" /> Values & Culture
+              </Link>
+              <Link href="/about/global-presence" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <MapPin className="h-4 w-4 text-primary" /> Global Presence
+              </Link>
             </div>
+          </div>
 
-            <div className="border-b pb-2">
-              <div className="mb-2 font-medium">Businesses</div>
-              <div className="grid grid-cols-1 gap-2">
-                <Link
-                  href="/businesses/oil-gas"
-                  className="flex items-center gap-2 text-sm text-gray-600"
-                >
+          {/* Businesses Section */}
+          <div className="py-3 px-4">
+            <button
+              onClick={() => toggleSection('businesses')}
+              className="flex w-full items-center justify-between py-2"
+            >
+              <span className="text-lg font-semibold">Businesses</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${openSections.businesses ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={openSections.businesses ? 'mt-2 space-y-4' : 'hidden'}>
+              {/* Oil & Gas */}
+              <div>
+                <div className="flex items-center gap-2 font-medium text-gray-900">
                   <Droplets className="h-4 w-4 text-primary" /> Oil & Gas
-                </Link>
-                <Link href="/businesses/digital" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-6 mt-1 space-y-1">
+                  <Link href="/brands/hasey-petroleum" className="block py-1 text-sm text-gray-600 hover:text-primary">Hasey Petroleum</Link>
+                  <Link href="/brands/hasey-oil" className="block py-1 text-sm text-gray-600 hover:text-primary">Hasey Oil</Link>
+                  <Link href="/brands/hasey-refinery" className="block py-1 text-sm text-gray-600 hover:text-primary">Hasey Refinery</Link>
+                </div>
+              </div>
+
+              {/* Digital */}
+              <div>
+                <div className="flex items-center gap-2 font-medium text-gray-900">
                   <Smartphone className="h-4 w-4 text-primary" /> Digital
-                </Link>
-                <Link href="/businesses/food" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-6 mt-1 space-y-1">
+                  <Link href="https://godigitalafrica.com/" className="block py-1 text-sm text-gray-600 hover:text-primary">GoDigital</Link>
+                  <Link href="/brands/jijo-digital" className="block py-1 text-sm text-gray-600 hover:text-primary">Jijo Digital</Link>
+                  <Link href="/brands/siso" className="block py-1 text-sm text-gray-600 hover:text-primary">SISO</Link>
+                </div>
+              </div>
+
+              {/* Food */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <ShoppingBag className="h-4 w-4 text-primary" /> Food
-                </Link>
-                <Link href="/businesses/finance" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/asa-poultry" className="block py-1 text-sm text-gray-600 hover:text-primary">ASA Poultry</Link>
+                  <Link href="/brands/sharaf-food" className="block py-1 text-sm text-gray-600 hover:text-primary">Sharaf</Link>
+                  <Link href="/brands/haya-water" className="block py-1 text-sm text-gray-600 hover:text-primary">Haya Water</Link>
+                  <Link href="/brands/asa" className="block py-1 text-sm text-gray-600 hover:text-primary">ASA</Link>
+                </div>
+              </div>
+
+              {/* Finance */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <DollarSign className="h-4 w-4 text-primary" /> Finance
-                </Link>
-                <Link href="/businesses/tours-travel" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/barwako-brothers" className="block py-1 text-sm text-gray-600 hover:text-primary">Barwako Brothers</Link>
+                  <Link href="/brands/sharaf-microfinance" className="block py-1 text-sm text-gray-600 hover:text-primary">Sharaf Microfinance</Link>
+                  <Link href="/brands/sharaf-bank" className="block py-1 text-sm text-gray-600 hover:text-primary">Sharaf Bank</Link>
+                  <Link href="/brands/smoney" className="block py-1 text-sm text-gray-600 hover:text-primary">Smoney</Link>
+                </div>
+              </div>
+
+              {/* Tours & Travel */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <Globe className="h-4 w-4 text-primary" /> Tours & Travel
-                </Link>
-                <Link href="/businesses/ecommerce" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="https://qatkentravel.com/" className="block py-1 text-sm text-gray-600 hover:text-primary">Qatken Travel & Tours</Link>
+                </div>
+              </div>
+
+              {/* E-Commerce */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <ShoppingBag className="h-4 w-4 text-primary" /> E-Commerce
-                </Link>
-                <Link href="/businesses/media" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/get24" className="block py-1 text-sm text-gray-600 hover:text-primary">Get24 Electronics</Link>
+                  <Link href="/brands/marikiti" className="block py-1 text-sm text-gray-600 hover:text-primary">Marikiti</Link>
+                  <Link href="/brands/swift-skill-squad" className="block py-1 text-sm text-gray-600 hover:text-primary">SwiftSkillSquad</Link>
+                  <Link href="/brands/hadiyad" className="block py-1 text-sm text-gray-600 hover:text-primary">Hadiyad</Link>
+                </div>
+              </div>
+
+              {/* Media */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <Film className="h-4 w-4 text-primary" /> Media
-                </Link>
-                <Link href="/businesses/real-estate" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/jijo-media" className="block py-1 text-sm text-gray-600 hover:text-primary">Jijo Media</Link>
+                  <Link href="/brands/jijo-tv" className="block py-1 text-sm text-gray-600 hover:text-primary">Jijo TV</Link>
+                </div>
+              </div>
+
+              {/* Real Estate */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <Building2 className="h-4 w-4 text-primary" /> Real Estate
-                </Link>
-                <Link href="/businesses/education" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/qatken-properties" className="block py-1 text-sm text-gray-600 hover:text-primary">Qatken Properties</Link>
+                  <Link href="/brands/interiors" className="block py-1 text-sm text-gray-600 hover:text-primary">Interiors</Link>
+                </div>
+              </div>
+
+              {/* Education */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <GraduationCap className="h-4 w-4 text-primary" /> Education
-                </Link>
-                <Link href="/businesses/health" className="flex items-center gap-2 text-sm text-gray-600">
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/sharaf-university" className="block py-1 text-sm text-gray-600 hover:text-primary">Sharaf University</Link>
+                  <Link href="/brands/balaf-institute" className="block py-1 text-sm text-gray-600 hover:text-primary">Balaf Institute</Link>
+                </div>
+              </div>
+
+              {/* Health */}
+              <div>
+                <div className="flex items-center gap-2 py-2 pl-4 font-medium">
                   <Heart className="h-4 w-4 text-primary" /> Health
-                </Link>
+                </div>
+                <div className="ml-8 space-y-2">
+                  <Link href="/brands/sheikh-abdi" className="block py-1 text-sm text-gray-600 hover:text-primary">Sheikh Abdi Cancer Centre</Link>
+                  <Link href="/brands/sharaf-hospitals" className="block py-1 text-sm text-gray-600 hover:text-primary">Sharaf Group of Hospitals</Link>
+                  <Link href="/brands/sharaf-life" className="block py-1 text-sm text-gray-600 hover:text-primary">Sharaf Life</Link>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="border-b pb-2">
-              <div className="mb-2 font-medium">Sustainability</div>
-              <div className="grid grid-cols-1 gap-2">
-                <Link href="/sustainability/overview" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Building2 className="h-4 w-4 text-primary" /> Overview
-                </Link>
-                <Link href="/sustainability/environment" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Leaf className="h-4 w-4 text-primary" /> Environment
-                </Link>
-                <Link href="/sustainability/social" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Users2 className="h-4 w-4 text-primary" /> Social
-                </Link>
-                <Link href="/sustainability/governance" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Scale className="h-4 w-4 text-primary" /> Governance
-                </Link>
-                <Link href="/sustainability/reports" className="flex items-center gap-2 text-sm text-gray-600">
-                  <FileText className="h-4 w-4 text-primary" /> Reports & Disclosures
-                </Link>
-                <Link href="/sustainability/foundation" className="flex items-center gap-2 text-sm text-gray-600">
-                  <HeartHandshake className="h-4 w-4 text-primary" /> Hasey Foundation
-                </Link>
-              </div>
+          {/* Sustainability Section */}
+          <div className="py-3 px-4">
+            <button
+              onClick={() => toggleSection('sustainability')}
+              className="flex w-full items-center justify-between py-2"
+            >
+              <span className="text-lg font-semibold">Sustainability</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${openSections.sustainability ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={openSections.sustainability ? 'mt-2 space-y-1' : 'hidden'}>
+              <Link href="/sustainability/overview" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Building2 className="h-4 w-4 text-primary" /> Overview
+              </Link>
+              <Link href="/sustainability/environment" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Leaf className="h-4 w-4 text-primary" /> Environment
+              </Link>
+              <Link href="/sustainability/social" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Users2 className="h-4 w-4 text-primary" /> Social
+              </Link>
+              <Link href="/sustainability/governance" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <Scale className="h-4 w-4 text-primary" /> Governance
+              </Link>
+              <Link href="/sustainability/reports" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <FileText className="h-4 w-4 text-primary" /> Reports & Disclosures
+              </Link>
+              <Link href="/sustainability/foundation" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-primary">
+                <HeartHandshake className="h-4 w-4 text-primary" /> Hasey Foundation
+              </Link>
             </div>
+          </div>
 
-            <div className="border-b pb-2">
-              <div className="mb-2 font-medium">Investors</div>
-              <div className="grid grid-cols-1 gap-2">
-                <Link href="/investors/overview" className="flex items-center gap-2 text-sm text-gray-600">
-                  <BarChart4 className="h-4 w-4 text-primary" /> Overview
-                </Link>
-                <Link href="/investors/financial-information" className="flex items-center gap-2 text-sm text-gray-600">
-                  <DollarSign className="h-4 w-4 text-primary" /> Financial Information
-                </Link>
-                <Link href="/investors/stock-information" className="flex items-center gap-2 text-sm text-gray-600">
-                  <LineChart className="h-4 w-4 text-primary" /> Stock Information
-                </Link>
-                <Link href="/investors/corporate-governance" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Shield className="h-4 w-4 text-primary" /> Corporate Governance
-                </Link>
-                <Link href="/investors/shareholder-resources" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Gift className="h-4 w-4 text-primary" /> Shareholder Resources
-                </Link>
-                <Link href="/investors/events-presentations" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Calendar className="h-4 w-4 text-primary" /> Events & Presentations
-                </Link>
-              </div>
+          {/* Investors Section */}
+          <div className="py-3 px-4">
+            <button
+              onClick={() => toggleSection('investors')}
+              className="flex w-full items-center justify-between py-2"
+            >
+              <span className="text-lg font-semibold">Investors</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${openSections.investors ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={openSections.investors ? 'mt-2 space-y-4' : 'hidden'}>
+              <Link href="/investors/overview" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <BarChart4 className="h-4 w-4 text-primary" /> Overview
+              </Link>
+              <Link href="/investors/financial-information" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <DollarSign className="h-4 w-4 text-primary" /> Financial Information
+              </Link>
+              <Link href="/investors/stock-information" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <LineChart className="h-4 w-4 text-primary" /> Stock Information
+              </Link>
+              <Link href="/investors/corporate-governance" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Shield className="h-4 w-4 text-primary" /> Corporate Governance
+              </Link>
+              <Link href="/investors/shareholder-resources" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Gift className="h-4 w-4 text-primary" /> Shareholder Resources
+              </Link>
+              <Link href="/investors/events-presentations" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Calendar className="h-4 w-4 text-primary" /> Events & Presentations
+              </Link>
             </div>
+          </div>
 
-            <div className="border-b pb-2">
-              <div className="mb-2 font-medium">News & Media</div>
-              <div className="grid grid-cols-1 gap-2">
-                <Link href="/news/press-releases" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Newspaper className="h-4 w-4 text-primary" /> Press Releases
-                </Link>
-                <Link href="/news/media-coverage" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Radio className="h-4 w-4 text-primary" /> Media Coverage
-                </Link>
-                <Link href="/news/stories" className="flex items-center gap-2 text-sm text-gray-600">
-                  <BookOpen className="h-4 w-4 text-primary" /> Stories
-                </Link>
-                <Link href="/news/media-library" className="flex items-center gap-2 text-sm text-gray-600">
-                  <ImageIcon className="h-4 w-4 text-primary" /> Media Library
-                </Link>
-                <Link href="/news/events" className="flex items-center gap-2 text-sm text-gray-600">
-                  <CalendarDays className="h-4 w-4 text-primary" /> Events
-                </Link>
-                <Link href="/news/contact-media" className="flex items-center gap-2 text-sm text-gray-600">
-                  <PhoneCall className="h-4 w-4 text-primary" /> Media Contacts
-                </Link>
-              </div>
+          {/* News & Media Section */}
+          <div className="py-3 px-4">
+            <button
+              onClick={() => toggleSection('news')}
+              className="flex w-full items-center justify-between py-2"
+            >
+              <span className="text-lg font-semibold">News & Media</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${openSections.news ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={openSections.news ? 'mt-2 space-y-4' : 'hidden'}>
+              <Link href="/news/press-releases" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Newspaper className="h-4 w-4 text-primary" /> Press Releases
+              </Link>
+              <Link href="/news/media-coverage" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Radio className="h-4 w-4 text-primary" /> Media Coverage
+              </Link>
+              <Link href="/news/stories" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <BookOpen className="h-4 w-4 text-primary" /> Stories
+              </Link>
+              <Link href="/news/media-library" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <ImageIcon className="h-4 w-4 text-primary" /> Media Library
+              </Link>
+              <Link href="/news/events" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <CalendarDays className="h-4 w-4 text-primary" /> Events
+              </Link>
+              <Link href="/news/contact-media" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <PhoneCall className="h-4 w-4 text-primary" /> Media Contacts
+              </Link>
             </div>
+          </div>
 
-            <div className="border-b pb-2">
-              <div className="mb-2 font-medium">Careers</div>
-              <div className="grid grid-cols-1 gap-2">
-                <Link href="/careers/why-hasey" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Briefcase className="h-4 w-4 text-primary" /> Why Hasey Group
-                </Link>
-                <Link href="/careers/life-at-hasey" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Coffee className="h-4 w-4 text-primary" /> Life at Hasey Group
-                </Link>
-                <Link href="/careers/opportunities" className="flex items-center gap-2 text-sm text-gray-600">
-                  <Zap className="h-4 w-4 text-primary" /> Opportunities
-                </Link>
-                <Link href="/careers/campus-recruitment" className="flex items-center gap-2 text-sm text-gray-600">
-                  <GraduationCap className="h-4 w-4 text-primary" /> Campus Recruitment
-                </Link>
-                <Link href="/careers/learning-development" className="flex items-center gap-2 text-sm text-gray-600">
-                  <BookOpenIcon className="h-4 w-4 text-primary" /> Learning & Development
-                </Link>
-              </div>
+          {/* Careers Section */}
+          <div className="py-3 px-4">
+            <button
+              onClick={() => toggleSection('careers')}
+              className="flex w-full items-center justify-between py-2"
+            >
+              <span className="text-lg font-semibold">Careers</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${openSections.careers ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={openSections.careers ? 'mt-2 space-y-4' : 'hidden'}>
+              <Link href="/careers/why-hasey" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Briefcase className="h-4 w-4 text-primary" /> Why Hasey Group
+              </Link>
+              <Link href="/careers/life-at-hasey" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Coffee className="h-4 w-4 text-primary" /> Life at Hasey Group
+              </Link>
+              <Link href="/careers/opportunities" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <Zap className="h-4 w-4 text-primary" /> Opportunities
+              </Link>
+              <Link href="/careers/campus-recruitment" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <GraduationCap className="h-4 w-4 text-primary" /> Campus Recruitment
+              </Link>
+              <Link href="/careers/learning-development" className="flex items-center gap-2 py-2 pl-4 text-sm text-gray-600 hover:text-primary">
+                <BookOpenIcon className="h-4 w-4 text-primary" /> Learning & Development
+              </Link>
             </div>
+          </div>
 
-            <div className="mt-4 flex flex-col gap-2">
-              <Button className="w-full">Contact Us</Button>
-              <div className="flex justify-between">
-                <Button variant="outline" size="icon">
-                  <Search className="h-5 w-5" />
-                </Button>
-                <Button variant="outline" size="icon">
-                  <Globe className="h-5 w-5" />
-                </Button>
-              </div>
+          <div className="p-4">
+            <Button className="w-full">Contact Us</Button>
+            <div className="mt-2 flex justify-between">
+              <Button variant="outline" size="icon">
+                <Search className="h-5 w-5" />
+              </Button>
+              <Button variant="outline" size="icon">
+                <Globe className="h-5 w-5" />
+              </Button>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
     </header>
   )
