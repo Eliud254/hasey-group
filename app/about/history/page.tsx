@@ -5,53 +5,52 @@ import PageLayout from "@/components/page-layout"
 export default function HistoryPage() {
   const milestones = [
     {
-      year: "1973",
+      year: "2016",
       title: "Foundation",
-      description: "Hasey Group was founded as a small trading company in New York by Robert Hasey.",
+      description: "Hasey Group was founded as a small trading company in Nairobi by Robert Hasey.",
       image: "/1970s-office-scene.png",
     },
     {
-      year: "1985",
+      year: "2018",
       title: "Energy Expansion",
       description:
         "Entered the energy sector with the acquisition of Eastern Petroleum, marking the beginning of our energy business.",
       image: "/offshore-dawn-1980s.png",
     },
     {
-      year: "1992",
+      year: "2019",
       title: "International Growth",
       description: "Expanded operations to Europe and Asia, establishing a global presence in key markets.",
       image: "/placeholder.svg?height=300&width=500&query=global business expansion 1990s",
     },
     {
-      year: "2001",
-      title: "Technology Ventures",
-      description: "Launched Hasey Technology Ventures to invest in emerging technologies and digital solutions.",
-      image: "/placeholder.svg?height=300&width=500&query=technology office 2000s",
-    },
-    {
-      year: "2008",
+      year: "2020",
       title: "Sustainability Focus",
       description: "Established our first sustainability framework and committed to reducing environmental impact.",
       image: "/placeholder.svg?height=300&width=500&query=renewable energy solar panels",
     },
     {
-      year: "2015",
+      year: "2021",
+      title: "Technology Ventures",
+      description: "Launched Hasey Technology Ventures to invest in emerging technologies and digital solutions.",
+      image: "/placeholder.svg?height=300&width=500&query=technology office 2000s",
+    },
+    {
+      year: "2022",
       title: "New Leadership",
       description: "Jonathan R. Hasey appointed as Chairman and CEO, ushering in a new era of innovation and growth.",
       image: "/placeholder.svg?height=300&width=500&query=modern corporate boardroom",
     },
     {
-      year: "2020",
-      title: "Net Zero Commitment",
-      description: "Announced ambitious climate action plan with commitment to achieve net zero emissions by 2040.",
+      year: "2023",
+      title: "Global Expansion",
+      description: "Achieved presence in over 30 countries with more than 25,000 employees worldwide.",
       image: "/placeholder.svg?height=300&width=500&query=sustainable business green technology",
     },
     {
-      year: "2023",
-      title: "50th Anniversary",
-      description:
-        "Celebrated 50 years of excellence and innovation, reaffirming our commitment to powering progress and shaping tomorrow.",
+      year: "2024",
+      title: "Net Zero Commitment",
+      description: "Announced ambitious climate action plan with commitment to achieve net zero emissions by 2040.",
       image: "/placeholder.svg?height=300&width=500&query=corporate anniversary celebration",
     },
   ]
@@ -65,7 +64,7 @@ export default function HistoryPage() {
     >
       <div className="mb-12">
         <p className="mx-auto max-w-3xl text-center text-lg text-gray-700">
-          Since our founding in 1973, Hasey Group has evolved from a small trading company to a global enterprise
+          Since our founding in 2016, Hasey Group has evolved from a small trading company to a global enterprise
           spanning multiple industries. Our journey reflects our commitment to innovation, strategic vision, and
           adaptability in a changing world.
         </p>
@@ -83,23 +82,21 @@ export default function HistoryPage() {
                 <div className="relative h-[250px] overflow-hidden rounded-xl">
                   <Image
                     src={
-                      milestone.year === "1973"
+                      milestone.year === "2016"
                         ? "/about-history-1970s.png"
-                        : milestone.year === "1985"
+                        : milestone.year === "2018"
                           ? "/about-history-1980s.png"
-                          : milestone.year === "1992"
+                          : milestone.year === "2019"
                             ? "/about-history-1990s.png"
-                            : milestone.year === "2001"
+                            : milestone.year === "2020"
                               ? "/about-history-2000s.png"
-                              : milestone.year === "2008"
+                              : milestone.year === "2021"
                                 ? "/about-history-2008.png"
-                                : milestone.year === "2015"
+                                : milestone.year === "2022"
                                   ? "/about-history-2015.png"
-                                  : milestone.year === "2020"
+                                  : milestone.year === "2023"
                                     ? "/about-history-2020.png"
-                                    : milestone.year === "2023"
-                                      ? "/about-history-2023.png"
-                                      : "/placeholder.svg"
+                                    : "/placeholder.svg"
                     }
                     alt={milestone.title}
                     fill

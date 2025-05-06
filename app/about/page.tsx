@@ -10,7 +10,7 @@ export default function AboutPage() {
         <div>
           <h2 className="mb-4 text-2xl font-bold">Our Story</h2>
           <p className="mb-4 text-gray-700">
-            Founded in 1973, Hasey Group has grown from a small trading company to a global conglomerate with interests
+            Founded in 2016, Hasey Group has grown from a small trading company to a global conglomerate with interests
             spanning energy, petrochemicals, infrastructure, telecommunications, and retail.
           </p>
           <p className="mb-4 text-gray-700">
@@ -77,8 +77,8 @@ export default function AboutPage() {
             <div className="relative flex flex-col md:flex-row gap-8">
               <div className="md:w-1/2 md:text-right md:pr-12">
                 <div className="hidden md:block absolute right-0 top-0 h-4 w-4 rounded-full bg-primary translate-x-1/2"></div>
-                <h3 className="text-xl font-bold">1973</h3>
-                <p className="text-gray-600">Founded in New York by Robert Hasey</p>
+                <h3 className="text-xl font-bold">2016</h3>
+                <p className="text-gray-600">Founded in Nairobi by Robert Hasey</p>
               </div>
               <div className="md:w-1/2 md:pl-12"></div>
             </div>
@@ -86,14 +86,14 @@ export default function AboutPage() {
               <div className="md:w-1/2 md:pr-12"></div>
               <div className="md:w-1/2 md:pl-12">
                 <div className="hidden md:block absolute left-0 top-0 h-4 w-4 rounded-full bg-primary -translate-x-1/2"></div>
-                <h3 className="text-xl font-bold">1985</h3>
+                <h3 className="text-xl font-bold">2018</h3>
                 <p className="text-gray-600">Entered the energy sector with acquisition of Eastern Petroleum</p>
               </div>
             </div>
             <div className="relative flex flex-col md:flex-row gap-8">
               <div className="md:w-1/2 md:text-right md:pr-12">
                 <div className="hidden md:block absolute right-0 top-0 h-4 w-4 rounded-full bg-primary translate-x-1/2"></div>
-                <h3 className="text-xl font-bold">2008</h3>
+                <h3 className="text-xl font-bold">2020</h3>
                 <p className="text-gray-600">Established first sustainability framework</p>
               </div>
               <div className="md:w-1/2 md:pl-12"></div>
@@ -103,7 +103,7 @@ export default function AboutPage() {
               <div className="md:w-1/2 md:pl-12">
                 <div className="hidden md:block absolute left-0 top-0 h-4 w-4 rounded-full bg-primary -translate-x-1/2"></div>
                 <h3 className="text-xl font-bold">2023</h3>
-                <p className="text-gray-600">Celebrated 50 years of excellence and innovation</p>
+                <p className="text-gray-600">Expanded to over 30 countries with 25,000+ employees worldwide</p>
               </div>
             </div>
           </div>

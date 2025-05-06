@@ -16,7 +16,7 @@ export default function AboutOverviewPage() {
           <h2 className="mb-4 text-2xl font-bold">Who We Are</h2>
           <p className="mb-4 text-gray-700">
             Hasey Group is a diversified global enterprise with operations spanning energy, infrastructure, technology,
-            and manufacturing sectors. Founded in 1973, we have grown from a small trading company to a multinational
+            and manufacturing sectors. Founded in 2016, we have grown from a small trading company to a multinational
             conglomerate with a presence in over 30 countries.
           </p>
           <p className="mb-4 text-gray-700">
@@ -48,7 +48,7 @@ export default function AboutOverviewPage() {
         <h2 className="mb-8 text-center text-3xl font-bold">Key Facts</h2>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-lg border p-6 text-center shadow-sm">
-            <div className="text-3xl font-bold text-primary">1973</div>
+            <div className="text-3xl font-bold text-primary">2016</div>
             <p className="text-gray-600">Year Founded</p>
           </div>
           <div className="rounded-lg border p-6 text-center shadow-sm">
