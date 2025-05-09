@@ -45,7 +45,14 @@ const brandsData: BrandsData = {
   // Add more brands here...
 }
 
-export default function BrandPage({ params }: { params: { slug: string } }) {
+// Type for dynamic route props
+type BrandPageProps = {
+  params: {
+    slug: string
+  }
+}
+
+export default function BrandPage({ params }: BrandPageProps) {
   const brand = brandsData[params.slug]
 
   if (!brand) {
@@ -70,13 +77,13 @@ export default function BrandPage({ params }: { params: { slug: string } }) {
               priority
             />
           </div>
-          
+
           <p className="mb-6 text-lg text-gray-700">{brand.description}</p>
-          
+
           <div className="mb-8">
             <h2 className="mb-4 text-xl font-bold">Key Features</h2>
             <ul className="space-y-2">
-              {brand.features.map((feature: string, index: number) => (
+              {brand.features.map((feature, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="mt-1 text-primary">•</span>
                   <span>{feature}</span>
@@ -94,7 +101,7 @@ export default function BrandPage({ params }: { params: { slug: string } }) {
           <div className="rounded-lg border bg-gray-50 p-6">
             <h2 className="mb-6 text-xl font-bold">Company Statistics</h2>
             <div className="grid grid-cols-2 gap-4">
-              {brand.stats.map((stat: BrandStat, index: number) => (
+              {brand.stats.map((stat, index) => (
                 <div key={index} className="rounded-lg border bg-white p-4 text-center">
                   <div className="text-2xl font-bold text-primary">{stat.value}</div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
@@ -124,4 +131,4 @@ export default function BrandPage({ params }: { params: { slug: string } }) {
       </div>
     </PageLayout>
   )
-} 
+}
