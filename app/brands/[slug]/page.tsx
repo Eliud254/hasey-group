@@ -46,14 +46,11 @@ const brandsData: BrandsData = {
   },
 };
 
-// Define the component props
-interface BrandPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function BrandPage({ params }: BrandPageProps) {
+export default function BrandPage({
+  params,
+}: {
+  params: { slug: string }; // Fixing the type of params
+}) {
   const brand = brandsData[params.slug];
 
   // If the brand is not found, show a 404 page
