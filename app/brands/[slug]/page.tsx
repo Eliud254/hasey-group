@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/page-layout";
 
+// Types for brand data
 interface BrandStat {
   label: string;
   value: string;
@@ -22,6 +23,7 @@ type BrandsData = {
   [key: string]: Brand;
 };
 
+// Example data for brands
 const brandsData: BrandsData = {
   "hasey-petroleum": {
     name: "Hasey Petroleum",
@@ -44,15 +46,17 @@ const brandsData: BrandsData = {
   },
 };
 
+// Define the component props
 interface BrandPageProps {
   params: {
     slug: string;
   };
 }
 
-export default async function BrandPage({ params }: BrandPageProps) {
+export default function BrandPage({ params }: BrandPageProps) {
   const brand = brandsData[params.slug];
 
+  // If the brand is not found, show a 404 page
   if (!brand) {
     notFound();
   }
@@ -141,4 +145,5 @@ export default async function BrandPage({ params }: BrandPageProps) {
     </PageLayout>
   );
 }
+
 
