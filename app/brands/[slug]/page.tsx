@@ -28,31 +28,24 @@ const brandsData: BrandsData = {
     name: "Hasey Petroleum",
     logo: "/brands/hasey-petroleum.png",
     sector: "Oil & Gas",
-    description: "Leading petroleum exploration and production company with operations across multiple regions.",
+    description:
+      "Leading petroleum exploration and production company with operations across multiple regions.",
     features: [
       "State-of-the-art exploration technology",
       "Sustainable production practices",
       "Global distribution network",
-      "Research and development facilities"
+      "Research and development facilities",
     ],
     stats: [
       { label: "Years of Operation", value: "15+" },
       { label: "Countries Present", value: "12" },
       { label: "Production Capacity", value: "500K bpd" },
-      { label: "Employees", value: "2,000+" }
-    ]
+      { label: "Employees", value: "2,000+" },
+    ],
   },
-  // Add more brands here...
 }
 
-// Type for dynamic route props
-type BrandPageProps = {
-  params: {
-    slug: string
-  }
-}
-
-export default function BrandPage({ params }: BrandPageProps) {
+export default function BrandPage({ params }: { params: { slug: string } }) {
   const brand = brandsData[params.slug]
 
   if (!brand) {
@@ -102,7 +95,10 @@ export default function BrandPage({ params }: BrandPageProps) {
             <h2 className="mb-6 text-xl font-bold">Company Statistics</h2>
             <div className="grid grid-cols-2 gap-4">
               {brand.stats.map((stat, index) => (
-                <div key={index} className="rounded-lg border bg-white p-4 text-center">
+                <div
+                  key={index}
+                  className="rounded-lg border bg-white p-4 text-center"
+                >
                   <div className="text-2xl font-bold text-primary">{stat.value}</div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
                 </div>
@@ -115,15 +111,21 @@ export default function BrandPage({ params }: BrandPageProps) {
             <div className="space-y-4">
               <div className="rounded-lg border bg-white p-4">
                 <h3 className="font-medium">Company Expansion</h3>
-                <p className="text-sm text-gray-600">Latest updates on our growth and development...</p>
+                <p className="text-sm text-gray-600">
+                  Latest updates on our growth and development...
+                </p>
               </div>
               <div className="rounded-lg border bg-white p-4">
                 <h3 className="font-medium">New Partnerships</h3>
-                <p className="text-sm text-gray-600">Recent collaborations and strategic alliances...</p>
+                <p className="text-sm text-gray-600">
+                  Recent collaborations and strategic alliances...
+                </p>
               </div>
               <div className="rounded-lg border bg-white p-4">
                 <h3 className="font-medium">Innovation Updates</h3>
-                <p className="text-sm text-gray-600">Recent technological advancements and innovations...</p>
+                <p className="text-sm text-gray-600">
+                  Recent technological advancements and innovations...
+                </p>
               </div>
             </div>
           </div>
