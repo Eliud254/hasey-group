@@ -1,28 +1,27 @@
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import PageLayout from "@/components/page-layout"
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import PageLayout from "@/components/page-layout";
 
 interface BrandStat {
-  label: string
-  value: string
+  label: string;
+  value: string;
 }
 
 interface Brand {
-  name: string
-  logo: string
-  sector: string
-  description: string
-  features: string[]
-  stats: BrandStat[]
+  name: string;
+  logo: string;
+  sector: string;
+  description: string;
+  features: string[];
+  stats: BrandStat[];
 }
 
 type BrandsData = {
-  [key: string]: Brand
-}
+  [key: string]: Brand;
+};
 
-// Mock data (ideally you'd fetch this from a DB)
 const brandsData: BrandsData = {
   "hasey-petroleum": {
     name: "Hasey Petroleum",
@@ -43,17 +42,20 @@ const brandsData: BrandsData = {
       { label: "Employees", value: "2,000+" },
     ],
   },
+};
+
+interface BrandPageProps {
+  params: {
+    slug: string;
+  };
 }
 
-// ✅ FIX: make the page component async and use correct typing
-export default async function BrandPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  const brand = brandsData[params.slug]
+export default async function BrandPage({ params }: BrandPageProps) {
+  const brand = brandsData[params.slug];
 
-  if (!brand) notFound()
+  if (!brand) {
+    notFound();
+  }
 
   return (
     <PageLayout
@@ -102,7 +104,9 @@ export default async function BrandPage({
                   key={index}
                   className="rounded-lg border bg-white p-4 text-center"
                 >
-                  <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                  <div className="text-2xl font-bold text-primary">
+                    {stat.value}
+                  </div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
                 </div>
               ))}
@@ -135,5 +139,6 @@ export default async function BrandPage({
         </div>
       </div>
     </PageLayout>
-  )
+  );
 }
+
