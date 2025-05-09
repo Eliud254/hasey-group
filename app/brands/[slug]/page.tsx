@@ -22,7 +22,7 @@ type BrandsData = {
   [key: string]: Brand
 }
 
-// This would typically come from a database or CMS
+// Mock data (ideally you'd fetch this from a DB)
 const brandsData: BrandsData = {
   "hasey-petroleum": {
     name: "Hasey Petroleum",
@@ -45,12 +45,15 @@ const brandsData: BrandsData = {
   },
 }
 
-export default function BrandPage({ params }: { params: { slug: string } }) {
+// ✅ FIX: make the page component async and use correct typing
+export default async function BrandPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const brand = brandsData[params.slug]
 
-  if (!brand) {
-    notFound()
-  }
+  if (!brand) notFound()
 
   return (
     <PageLayout
