@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/page-layout";
+import { Metadata } from "next";
 
 // Types for brand data
 interface BrandStat {
@@ -21,6 +22,14 @@ interface Brand {
 
 type BrandsData = {
   [key: string]: Brand;
+};
+
+// Define proper page props type for Next.js 15
+type PageProps = {
+  params: {
+    slug: string;
+  };
+  searchParams: Record<string, string | string[]>;
 };
 
 // Example data for brands
@@ -46,11 +55,24 @@ const brandsData: BrandsData = {
   },
 };
 
-export default function BrandPage({
-  params,
-}: {
-  params: { slug: string }; // Fixing the type of params
-}) {
+// Generate metadata for SEO
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const brand = brandsData[params.slug];
+  
+  if (!brand) {
+    return {
+      title: "Brand Not Found",
+    };
+  }
+  
+  return {
+    title: `${brand.name} | Hasey Group`,
+    description: brand.description,
+  };
+}
+
+// Updated page component to match Next.js 15 requirements
+export default async function BrandPage({ params }: PageProps) {
   const brand = brandsData[params.slug];
 
   // If the brand is not found, show a 404 page
