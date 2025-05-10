@@ -132,7 +132,7 @@ export default function BrandPage({
               <div className="rounded-lg border bg-white p-4">
                 <h3 className="font-medium">Innovation Updates</h3>
                 <p className="text-sm text-gray-600">
-                  Recent technological advancements and innovations...
+                  Recent technological advancements and innovations.....
                 </p>
               </div>
             </div>
