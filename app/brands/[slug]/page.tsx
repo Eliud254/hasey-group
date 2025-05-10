@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/page-layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 // Types for brand data
 interface BrandStat {
@@ -22,14 +22,6 @@ interface Brand {
 
 type BrandsData = {
   [key: string]: Brand;
-};
-
-// Define proper page props type for Next.js 15
-type PageProps = {
-  params: {
-    slug: string;
-  };
-  searchParams: Record<string, string | string[]>;
 };
 
 // Example data for brands
@@ -55,8 +47,10 @@ const brandsData: BrandsData = {
   },
 };
 
-// Generate metadata for SEO
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+// Generate metadata using the correct Next.js 15 types
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+): Promise<Metadata> {
   const brand = brandsData[params.slug];
   
   if (!brand) {
@@ -71,8 +65,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// Updated page component to match Next.js 15 requirements
-export default async function BrandPage({ params }: PageProps) {
+// Page component using Next.js 15 pattern
+export default async function BrandPage({ 
+  params 
+}: { 
+  params: { slug: string } 
+}) {
   const brand = brandsData[params.slug];
 
   // If the brand is not found, show a 404 page
@@ -164,5 +162,3 @@ export default async function BrandPage({ params }: PageProps) {
     </PageLayout>
   );
 }
-
-
